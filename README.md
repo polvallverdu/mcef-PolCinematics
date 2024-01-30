@@ -35,29 +35,23 @@ MCEF is LGPL, as long as your project doesn't modify or include MCEF source code
 ### Using MCEF in Your Project
 ```
 repositories {
-    maven {
-        url = uri('https://mcef-download.cinemamod.com/repositories/releases')
-    }
-    // Optional for snapshot versions
-    maven {
-        url = uri('https://mcef-download.cinemamod.com/repositories/snapshots')
-    }
+    maven { url 'https://jitpack.io' }
 }
 ```
 #### Fabric
 ```
 dependencies {
-    modCompileOnly 'com.cinemamod:mcef:2.1.4-1.20.1'
-    modRuntimeOnly 'com.cinemamod:mcef-fabric:2.1.4-1.20.1'
+    modCompileOnly 'com.github.polvallverdu.MCEF-PolCinematics:mcef:{version or commit hash}'
+    modRuntimeOnly 'com.github.polvallverdu.MCEF-PolCinematics:mcef-fabric:{version or commit hash}'
 }
 ```
 See the [mcef-fabric-example-mod](https://github.com/CinemaMod/mcef-fabric-example-mod) for a complete example Fabric project.
 
-#### NeoForge
+#### Forge
 ```
 dependencies {
-    compileOnly fg.deobf('com.cinemamod:mcef:2.1.4-1.20.1')
-    runtimeOnly fg.deobf('com.cinemamod:mcef-forge:2.1.4-1.20.1')
+    compileOnly fg.deobf('com.github.polvallverdu.MCEF-PolCinematics:mcef:{version or commit hash}')
+    runtimeOnly fg.deobf('com.github.polvallverdu.MCEF-PolCinematics:mcef-forge:{version or commit hash}')
 }
 ```
 ### Building & Modifying MCEF
