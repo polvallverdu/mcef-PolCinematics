@@ -23,7 +23,6 @@ package com.cinemamod.mcef.internal;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.TitleScreen;
 import net.minecraft.network.chat.Component;
@@ -37,7 +36,7 @@ public class MCEFDownloaderMenu extends Screen {
     }
 
     @Override
-    public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
+    public void render(PoseStack graphics, int mouseX, int mouseY, float partialTick) {
         renderBackground(graphics);
         double cx = width / 2d;
         double cy = height / 2d;
@@ -45,30 +44,30 @@ public class MCEFDownloaderMenu extends Screen {
         double progressBarHeight = 14;
         double progressBarWidth = width / 3d; // TODO: base off screen with (1/3 of screen)
 
-        PoseStack poseStack = graphics.pose();
+        PoseStack poseStack = graphics;
 
         /* Draw Progress Bar */
         poseStack.pushPose();
         poseStack.translate(cx, cy, 0);
         poseStack.translate(-progressBarWidth / 2d, -progressBarHeight / 2d, 0);
-        graphics.fill( // bar border
-                0, 0,
-                (int) progressBarWidth,
-                (int) progressBarHeight,
-                -1
-        );
-        graphics.fill( // bar padding
-                2, 2,
-                (int) progressBarWidth - 2,
-                (int) progressBarHeight - 2,
-                -16777215
-        );
-        graphics.fill( // bar bar
-                4, 4,
-                (int) ((progressBarWidth - 4) * MCEFDownloadListener.INSTANCE.getProgress()),
-                (int) progressBarHeight - 4,
-                -1
-        );
+//        graphics.fill( // bar border
+//                0, 0,
+//                (int) progressBarWidth,
+//                (int) progressBarHeight,
+//                -1
+//        );
+//        graphics.fill( // bar padding
+//                2, 2,
+//                (int) progressBarWidth - 2,
+//                (int) progressBarHeight - 2,
+//                -16777215
+//        );
+//        graphics.fill( // bar bar
+//                4, 4,
+//                (int) ((progressBarWidth - 4) * MCEFDownloadListener.INSTANCE.getProgress()),
+//                (int) progressBarHeight - 4,
+//                -1
+//        );
         poseStack.popPose();
 
         // putting this here incase I want to re-add a third line later on
@@ -88,12 +87,12 @@ public class MCEFDownloaderMenu extends Screen {
                 0
         );
         // draw menu name
-        graphics.drawString(
-                font,
-                ChatFormatting.GOLD + title.getString(),
-                (int) -(font.width(title.getString()) / 2d), 0,
-                0xFFFFFF
-        );
+//        graphics.drawString(
+//                font,
+//                ChatFormatting.GOLD + title.getString(),
+//                (int) -(font.width(title.getString()) / 2d), 0,
+//                0xFFFFFF
+//        );
         // draw text
         int index = 0;
         for (String s : text) {
@@ -102,12 +101,12 @@ public class MCEFDownloaderMenu extends Screen {
             }
 
             poseStack.translate(0, font.lineHeight + 2, 0);
-            graphics.drawString(
-                    font,
-                    s,
-                    (int) -(font.width(s) / 2d), 0,
-                    0xFFFFFF
-            );
+//            graphics.drawString(
+//                    font,
+//                    s,
+//                    (int) -(font.width(s) / 2d), 0,
+//                    0xFFFFFF
+//            );
             index++;
         }
         poseStack.popPose();
